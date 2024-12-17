@@ -21,12 +21,50 @@
  *    getIntervalArray(3, 3) => [ 3 ]
  */
 function getIntervalArray(start, end) {
-  const arr = [];
-  for (let i = start; i <= end; i += 1) {
-    arr.push(i);
+  if (start < 0 && end >= 0) {
+    const array = Array.from(
+      { length: Math.abs(start) + end + 1 },
+      (item, index) => {
+        return index + start;
+      }
+    );
+    return array;
   }
 
-  return arr;
+  if (start === end) {
+    return [start];
+  }
+
+  if (start === 0 && end > 0) {
+    const array = Array.from(
+      { length: Math.abs(start) + end + 1 },
+      (item, index) => {
+        return index + start;
+      }
+    );
+    return array;
+  }
+
+  if (start >= 1 && end > start) {
+    const array = Array.from(
+      { length: Math.abs(start) + end - 1 },
+      (item, index) => {
+        return index + start;
+      }
+    );
+    return array;
+  }
+
+  if (start < 0 && end < 0) {
+    const array = Array.from(
+      { length: Math.abs(start) - Math.abs(end) + 1 },
+      (item, index) => {
+        return index + start;
+      }
+    );
+    return array;
+  }
+  return [];
 }
 
 /**
